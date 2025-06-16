@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Botões Mágicos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, #8a2be2, #6a0dad); /* Gradiente roxo */
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+        .container {
+            text-align: center;
+            position: relative;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            height: 100px;
+            width: 140px;
+        }
+        .btn-sim {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .btn-nao {
+            background-color: #FF5733;
+            color: white;
+        }
+
+        /* Efeito de brilho nos botões */
+        button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        
+    </style>
+</head>
+<body>
+    <h1>Sua mãe vai deixar a gente fazer alguma coisa na quinta</h1>
+    <p>Escolha a opção correta abaixo:</p>
+
+<div class="container">
+    <button class="btn-sim" id="btn-sim">Sim</button>
+    <button class="btn-nao" id="btn-nao">Não</button>
+</div>
+
+<div class="light-glow"></div> <!-- Ponto de luz -->
+
+<script>
+    let naoButton = document.getElementById('btn-nao');
+    let container = document.querySelector('.container');
+    
+    // Função para mover o botão "Não" com transform
+    function moveNaoButton() {
+        let maxX = window.innerWidth - naoButton.offsetWidth;
+        let maxY = window.innerHeight - naoButton.offsetHeight;
+        
+        let randomX = Math.random() * maxX;
+        let randomY = Math.random() * maxY;
+
+        // Usando transform para mover o botão
+        naoButton.style.transform = `translate(${randomX}px, ${randomY}px)`;
+    }
+
+    // Quando o botão "Não" é clicado, move ele
+    naoButton.addEventListener('click', function() {
+        moveNaoButton();
+    });
+
+    // O botão "Sim" apenas faz nada quando clicado
+    document.getElementById('btn-sim').addEventListener('click', function() {
+        alert("Você escolheu a opção certa :)");
+    });
+</script>
+
+</body>
+</html>
